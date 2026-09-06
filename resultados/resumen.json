@@ -1,0 +1,22 @@
+{
+  "observaciones": 754,
+  "variables_originales": 5,
+  "pacientes": 632,
+  "centros": 11,
+  "clases_imagenes": {
+    "CE": 547,
+    "LAA": 207
+  },
+  "clases_pacientes": {
+    "CE": 457,
+    "LAA": 175
+  },
+  "nulos": 0,
+  "duplicados_eliminados": 0,
+  "pacientes_multiples_imagenes": 89,
+  "max_imagenes_paciente": 5,
+  "imagenes_locales": 6,
+  "imagenes_con_etiqueta": 3,
+  "tiles_candidatos": 1038,
+  "tiles_aceptados": 806
+}

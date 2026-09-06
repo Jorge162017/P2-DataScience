@@ -1,0 +1,16 @@
+{
+  "parametros": {
+    "lado_tile": 128,
+    "gris_umbral": 230,
+    "saturacion_umbral": 0.1,
+    "tejido_minimo": 0.25,
+    "nitidez_minima": 2.0
+  },
+  "versiones": {
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "matplotlib": "3.11.1",
+    "Pillow": "12.3.0",
+    "scipy": "1.18.0"
+  }
+}
