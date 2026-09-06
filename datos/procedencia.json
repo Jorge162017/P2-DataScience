@@ -1,0 +1,62 @@
+{
+  "fuente_original": "https://www.kaggle.com/competitions/mayo-clinic-strip-ai/data",
+  "fuente_inmediata": "Copia de los archivos de datos locales del proyecto P2-DS, usado como referencia. No se descargaron ni verificaron WSI originales.",
+  "archivos": [
+    {
+      "archivo": "datos/train.csv",
+      "origen_local": "P2-DS/fase1/data/train.csv",
+      "sha256": "8f713e3e863417aec94083ee6f97db6849ad7bde1d9b63de2c17cb5b1db806d8",
+      "bytes": 17896,
+      "tipo": "metadatos",
+      "image_id": null
+    },
+    {
+      "archivo": "datos/imagenes/02ebd5_0.png",
+      "origen_local": "P2-DS/fase1/data/02ebd5_0.png",
+      "sha256": "6431941301b9609203736d9698523b6114e076f0685ec273e8d80ac0f50912c3",
+      "bytes": 1717584,
+      "tipo": "vista_png",
+      "image_id": "02ebd5_0"
+    },
+    {
+      "archivo": "datos/imagenes/0412ab_0.png",
+      "origen_local": "P2-DS/fase1/data/0412ab_0.png",
+      "sha256": "f2d2c089aa479f9c40be13ee48731ae186d22c9934c10db245c405adcd225d7e",
+      "bytes": 1977406,
+      "tipo": "vista_png",
+      "image_id": "0412ab_0"
+    },
+    {
+      "archivo": "datos/imagenes/08b8ef_0.png",
+      "origen_local": "P2-DS/fase1/data/08b8ef_0.png",
+      "sha256": "936faf18efe49aedfdee45929b3152f6c5612ff619492e94757b281322336f70",
+      "bytes": 593745,
+      "tipo": "vista_png",
+      "image_id": "08b8ef_0"
+    },
+    {
+      "archivo": "datos/imagenes/006388_0_tissue2048.jpg",
+      "origen_local": "P2-DS/fase3/images/006388_0_tissue2048.jpg",
+      "sha256": "60212500be5c8612736d0be20c28a3c500e3d2d1bf333c06d6098e609017eb43",
+      "bytes": 1817284,
+      "tipo": "recorte_jpg",
+      "image_id": "006388_0"
+    },
+    {
+      "archivo": "datos/imagenes/008e5c_0_tissue2048.jpg",
+      "origen_local": "P2-DS/fase3/images/008e5c_0_tissue2048.jpg",
+      "sha256": "848f3c62acf035870755cdb9f74da16d911b343d039e5ac810fc4bce0af7bdb1",
+      "bytes": 2312214,
+      "tipo": "recorte_jpg",
+      "image_id": "008e5c_0"
+    },
+    {
+      "archivo": "datos/imagenes/00c058_0_tissue2048.jpg",
+      "origen_local": "P2-DS/fase3/images/00c058_0_tissue2048.jpg",
+      "sha256": "a06c07655bca39c46fa9189df23e16859c630e23da1fd25f12ae253034eabc2d",
+      "bytes": 2309044,
+      "tipo": "recorte_jpg",
+      "image_id": "00c058_0"
+    }
+  ]
+}

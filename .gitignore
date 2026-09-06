@@ -1,0 +1,8 @@
+.DS_Store
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.mplconfig/
+# Proyecto ajeno: referencia local, fuera de la entrega propia.
+/P2-DS/
