@@ -1,0 +1,60 @@
+{
+  "fuente": "https://www.kaggle.com/datasets/saurabhsawhney/mayo-resized-images",
+  "descripcion": "Copia derivada; 746 PNG de ancho 1120 px y 8 de 1100 px; no son las láminas TIFF originales",
+  "imagenes_png": 754,
+  "pacientes": 632,
+  "etiquetas": {
+    "CE": 547,
+    "LAA": 207
+  },
+  "indices_unicos_y_etiquetas_coinciden": true,
+  "anchos_png": {
+    "1120": 746,
+    "1100": 8
+  },
+  "png_integridad_y_ancho_verificados": true,
+  "tiff_originales_cotejados_por_proporcion": 26,
+  "orientaciones_cotejadas": {
+    "directa": 25,
+    "rotada": 1
+  },
+  "max_diferencia_alto_px": 1,
+  "ejemplos_cotejo": [
+    {
+      "image_id": "028989_0",
+      "alto_esperado": 2927,
+      "alto_png": 2927,
+      "diferencia_px": 0,
+      "orientacion": "directa"
+    },
+    {
+      "image_id": "055f6a_0",
+      "alto_esperado": 2954,
+      "alto_png": 2953,
+      "diferencia_px": 1,
+      "orientacion": "directa"
+    },
+    {
+      "image_id": "0cc0bc_0",
+      "alto_esperado": 1519,
+      "alto_png": 1519,
+      "diferencia_px": 0,
+      "orientacion": "directa"
+    },
+    {
+      "image_id": "113bb3_0",
+      "alto_esperado": 6290,
+      "alto_png": 6289,
+      "diferencia_px": 1,
+      "orientacion": "directa"
+    },
+    {
+      "image_id": "140d1a_0",
+      "alto_esperado": 8384,
+      "alto_png": 8383,
+      "diferencia_px": 1,
+      "orientacion": "directa"
+    }
+  ],
+  "bytes_png": 1042694773
+}

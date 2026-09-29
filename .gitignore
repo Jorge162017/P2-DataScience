@@ -6,3 +6,10 @@ __pycache__/
 .mplconfig/
 # Proyecto ajeno: referencia local, fuera de la entrega propia.
 /P2-DS/
+# Láminas originales del concurso: archivos grandes que se descargan localmente.
+/datos/originales/
+/datos/reducidas/
+# Vistas por lámina generadas por el piloto (regenerables; ~15 MB).
+/resultados/figuras/muestras_por_lamina/
+# Enunciado del curso conservado solo como referencia local.
+/Proyecto 2. Resultados. 2026.pdf

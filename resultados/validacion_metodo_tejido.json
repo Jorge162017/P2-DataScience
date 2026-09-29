@@ -1,0 +1,23 @@
+{
+  "imagenes": 754,
+  "umbrales": {
+    "base": "distancia RGB >30, textura >3",
+    "permisivo": "distancia RGB >20, textura >2",
+    "estricto": "distancia RGB >40, textura >5"
+  },
+  "mediana_fraccion": {
+    "regla_primera_fase": 0.1436,
+    "permisivo": 0.128,
+    "base": 0.1245,
+    "estricto": 0.1203
+  },
+  "mediana_iou_con_base": {
+    "permisivo": 0.9819,
+    "estricto": 0.9745
+  },
+  "anterior_excede_base_10_puntos_en_imagenes": 119,
+  "anterior_excede_base_25_puntos_en_imagenes": 116,
+  "imagenes_con_cambio_base_estricto_mas_5_puntos": 4,
+  "imagenes_con_cambio_permisivo_base_mas_5_puntos": 1,
+  "nota": "La comparación de reglas y umbrales no es exactitud clínica; faltan máscaras manuales de referencia."
+}

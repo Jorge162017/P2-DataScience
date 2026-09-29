@@ -1,0 +1,55 @@
+{
+  "fuente_csv_local": "datos/train.csv (copia de P2-DS)",
+  "sha256_csv_local": "8f713e3e863417aec94083ee6f97db6849ad7bde1d9b63de2c17cb5b1db806d8",
+  "sha256_csv_oficial": "8f713e3e863417aec94083ee6f97db6849ad7bde1d9b63de2c17cb5b1db806d8",
+  "filas_csv": 754,
+  "pacientes": 632,
+  "etiquetas_por_imagen": {
+    "CE": 547,
+    "LAA": 207
+  },
+  "etiquetas_por_paciente": {
+    "CE": 457,
+    "LAA": 175
+  },
+  "centros": 11,
+  "imagenes_locales": [
+    {
+      "archivo": "006388_0_tissue2048.jpg",
+      "image_id": "006388_0",
+      "en_train_csv": true
+    },
+    {
+      "archivo": "008e5c_0_tissue2048.jpg",
+      "image_id": "008e5c_0",
+      "en_train_csv": true
+    },
+    {
+      "archivo": "00c058_0_tissue2048.jpg",
+      "image_id": "00c058_0",
+      "en_train_csv": true
+    },
+    {
+      "archivo": "02ebd5_0.png",
+      "image_id": "02ebd5_0",
+      "en_train_csv": false
+    },
+    {
+      "archivo": "0412ab_0.png",
+      "image_id": "0412ab_0",
+      "en_train_csv": false
+    },
+    {
+      "archivo": "08b8ef_0.png",
+      "image_id": "08b8ef_0",
+      "en_train_csv": false
+    }
+  ],
+  "coincide_con_csv_oficial": true,
+  "muestra_piloto": {
+    "pacientes": 40,
+    "por_clase": 20,
+    "centros": 11,
+    "semilla": 22
+  }
+}
