@@ -22,6 +22,7 @@ correlaciones y revisión de valores atípicos. No se entrenó un clasificador.
 - [Avance de resultados de la segunda fase](AVANCE_RESULTADOS.md): cotejo con Kaggle y primeras láminas originales.
 - [EDA visual completo](EDA_VISUAL_REDUCIDAS.md): las 754 imágenes reducidas y validación del cribado de tejido.
 - [PDF del EDA visual](EDA_Visual_Proyecto2.pdf).
+- [Partición por paciente](PARTICION_DATOS.md): entrenamiento, validación y prueba sin mezclar pacientes.
 
 ## Datos y resultados
 
@@ -49,6 +50,7 @@ piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
 - `datos/`: CSV, imágenes y registro de procedencia con SHA-256.
 - `validar_reducidas.py`: verifica los PNG y regenera el manifiesto.
 - `analizar_reducidas.py` y `validar_metodo_tejido.py`: EDA visual completo y auditoría de la máscara.
+- `particionar_pacientes.py` y `validar_particion.py`: división y control de fuga entre grupos.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
 - `presentacion/`: diapositivas finales en PPTX y PDF.
@@ -79,6 +81,8 @@ python validar_reducidas.py
 python analizar_reducidas.py
 python validar_metodo_tejido.py
 python exportar_eda_pdf.py
+python particionar_pacientes.py
+python validar_particion.py
 ```
 
 En Windows, activar el entorno con `.venv\Scripts\activate`.

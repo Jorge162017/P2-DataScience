@@ -1,0 +1,56 @@
+{
+  "semilla": 22,
+  "proporciones_objetivo": {
+    "entrenamiento": 0.7,
+    "validacion": 0.15,
+    "prueba": 0.15
+  },
+  "metodo": "Cuotas por centro y clase; asignación aleatoria reproducible de pacientes completos",
+  "sha256_train_csv": "8f713e3e863417aec94083ee6f97db6849ad7bde1d9b63de2c17cb5b1db806d8",
+  "sha256_manifiesto": "4d8c414b6e7017ed55682cfaf046649a694537e7a9362746b9993930ff43ba9e",
+  "pacientes_total": 632,
+  "imagenes_total": 754,
+  "pacientes_por_particion": {
+    "entrenamiento": 440,
+    "validacion": 97,
+    "prueba": 95
+  },
+  "imagenes_por_particion": {
+    "entrenamiento": 519,
+    "validacion": 121,
+    "prueba": 114
+  },
+  "pacientes_clase_por_particion": {
+    "entrenamiento": {
+      "CE": 319,
+      "LAA": 121
+    },
+    "validacion": {
+      "LAA": 28,
+      "CE": 69
+    },
+    "prueba": {
+      "CE": 69,
+      "LAA": 26
+    }
+  },
+  "centros_por_particion": {
+    "entrenamiento": 11,
+    "validacion": 11,
+    "prueba": 11
+  },
+  "pacientes_sin_fuga": true,
+  "imagenes_sin_sha256_duplicado": true,
+  "estratos_imposibles_de_representar_en_tres_particiones": [
+    {
+      "center_id": "8",
+      "label": "LAA",
+      "pacientes": 2
+    },
+    {
+      "center_id": "9",
+      "label": "LAA",
+      "pacientes": 2
+    }
+  ]
+}
