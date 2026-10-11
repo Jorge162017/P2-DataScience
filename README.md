@@ -4,14 +4,16 @@
 CC3084 Data Science · Universidad del Valle de Guatemala · 2026
 **Jorge Luis Lopez — 221038**
 
-Primera fase terminada de análisis exploratorio de los datos del reto
+Análisis exploratorio y fase de modelado de los datos del reto
 [Mayo Clinic — STRIP AI](https://www.kaggle.com/competitions/mayo-clinic-strip-ai/data),
 orientado al estudio de las etiologías cardioembólica (CE) y ateroesclerosis de
 grandes arterias (LAA) en coágulos de pacientes con accidente cerebrovascular.
 
-El análisis de la primera fase incluye limpieza y validación de metadatos, distribución de clases,
+La primera fase incluye limpieza y validación de metadatos, distribución de clases,
 comparaciones por paciente y centro, procesamiento de imágenes, estadísticas,
-correlaciones y revisión de valores atípicos. No se entrenó un clasificador.
+correlaciones y revisión de valores atípicos. La segunda fase incluye división por
+paciente, selección de tejido, extracción de características, entrenamiento de
+tres clasificadores y una aplicación interactiva.
 
 ## Entregables
 
@@ -25,6 +27,7 @@ correlaciones y revisión de valores atípicos. No se entrenó un clasificador.
 - [Partición por paciente](PARTICION_DATOS.md): entrenamiento, validación y prueba sin mezclar pacientes.
 - [Selección de regiones](SELECCION_REGIONES.md): recortes con tejido y revisión de siete imágenes de baja cobertura.
 - [Resultados de modelos](RESULTADOS_MODELOS.md): ajuste y comparación por paciente, con prueba reservada.
+- [Aplicación interactiva](APLICACION_INTERACTIVA.md): exploración, métricas y carga de nuevas imágenes reducidas.
 
 ## Datos y resultados
 
@@ -55,6 +58,7 @@ piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
 - `particionar_pacientes.py` y `validar_particion.py`: división y control de fuga entre grupos.
 - `seleccionar_regiones.py` y `validar_regiones.py`: coordenadas de recortes y control de calidad.
 - `extraer_caracteristicas.py` y `entrenar_modelos.py`: extracción, ajuste y evaluación de tres clasificadores.
+- `app.py`, `templates/` y `static/`: aplicación local con Flask para explorar y clasificar.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
 - `presentacion/`: diapositivas finales en PPTX y PDF.
@@ -91,6 +95,7 @@ python seleccionar_regiones.py
 python validar_regiones.py
 python extraer_caracteristicas.py
 python entrenar_modelos.py
+python app.py
 ```
 
 En Windows, activar el entorno con `.venv\Scripts\activate`.

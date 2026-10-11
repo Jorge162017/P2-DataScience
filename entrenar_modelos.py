@@ -239,6 +239,12 @@ def main():
     joblib.dump({"pipeline": fitted[winner], "feature_columns": feature_columns,
                  "positive_class": POSITIVE, "selection_rule": "max AUC validacion"},
                 MODEL_DIR / "modelo_elegido.joblib", compress=3)
+    for name, filename in (("Regresión logística", "regresion_logistica.joblib"),
+                           ("Bosque aleatorio", "bosque_aleatorio.joblib"),
+                           ("SVM RBF", "svm_rbf.joblib")):
+        joblib.dump({"pipeline": fitted[name], "feature_columns": feature_columns,
+                     "positive_class": POSITIVE, "name": name},
+                    MODEL_DIR / filename, compress=3)
     test_chosen = predictions[(predictions.modelo == winner) &
                               (predictions.particion == "prueba")]
     confidence = uncertainty(y_test, test_chosen.probabilidad_laa.to_numpy())
