@@ -55,6 +55,23 @@ def overview():
 
 
 @lru_cache(maxsize=1)
+def patient_features():
+    data = pd.read_csv(ROOT / "resultados/modelos/caracteristicas_pacientes.csv",
+                       dtype={"center_id": str, "patient_id": str})
+    columns = [column for column in data.columns
+               if column not in {"patient_id", "label", "center_id", "particion"}]
+    if len(data) != 630 or len(columns) != 114:
+        raise ValueError("La tabla de características de pacientes está incompleta.")
+    return {
+        "columns": columns,
+        "rows": [{"label": row.label, "center": row.center_id,
+                  "split": row.particion,
+                  "values": [float(value) for value in row[columns]]}
+                 for _, row in data.iterrows()],
+    }
+
+
+@lru_cache(maxsize=1)
 def performance():
     metrics = pd.read_csv(ROOT / "resultados/modelos/metricas_modelos.csv")
     predictions = pd.read_csv(ROOT / "resultados/modelos/predicciones_pacientes.csv")
@@ -130,6 +147,11 @@ def api_overview():
 @app.get("/api/performance")
 def api_performance():
     return jsonify(performance())
+
+
+@app.get("/api/features")
+def api_features():
+    return jsonify(patient_features())
 
 
 @app.post("/api/predict")

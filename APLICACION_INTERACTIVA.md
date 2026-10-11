@@ -2,7 +2,10 @@
 
 La aplicación local permite explorar los 632 pacientes y las 754 imágenes del
 conjunto etiquetado, comparar los tres clasificadores y cargar nuevas imágenes
-reducidas para obtener una salida CE/LAA por modelo.
+reducidas para obtener una salida CE/LAA por modelo. El explorador permite
+filtrar por centro, clase y partición, y comparar las distribuciones de las 114
+características usadas por los modelos en los 630 pacientes con regiones.
+La sección de modelos permite ocultar toda la información de rendimiento.
 
 ## Ejecución
 

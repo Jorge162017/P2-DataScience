@@ -1,6 +1,6 @@
 const colors = {'Regresión logística':'#527d91','Bosque aleatorio':'#d98b4e','SVM RBF':'#8e74a5'};
 const shortNames = {'Regresión logística':'Regresión logística','Bosque aleatorio':'Bosque aleatorio','SVM RBF':'SVM RBF'};
-let overviewData, performanceData;
+let overviewData, performanceData, featureData;
 const $ = id => document.getElementById(id);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -32,8 +32,39 @@ function renderCenters() {
     const laa=filter==='CE'?0:(rows.find(r=>r.center===id&&r.label==='LAA')?.count||0);
     return `<div class="center-item"><div class="center-stack"><div class="center-piece laa" style="height:${laa/max*145}px" title="Centro ${id}: ${laa} LAA"></div><div class="center-piece ce" style="height:${ce/max*145}px" title="Centro ${id}: ${ce} CE"></div></div><strong>${id}</strong><span>${totals[i]}</span></div>`;
   }).join('');
+  const largest=totals.indexOf(max);
+  $('center-insight').textContent=`Centro ${ids[largest]}: ${max} pacientes ${filter==='all'?'en total':'de clase '+filter}. La cantidad de pacientes varía entre centros; esa diferencia puede influir en lo que aprende el modelo.`;
 }
 $('center-filter').addEventListener('change',()=>overviewData&&renderCenters());
+
+function featureLabel(name) {
+  const prefix=name.startsWith('media_')?'Promedio':'Variación';
+  const base=name.replace(/^(media|desv)_/,'');
+  const descriptions={r_media:'intensidad roja',g_media:'intensidad verde',b_media:'intensidad azul',h_media:'tono',s_media:'saturación',v_media:'brillo',gris_desv:'variación de gris',gris_entropia:'entropía de gris',gradiente_media:'intensidad de bordes',gradiente_desv:'variación de bordes',laplaciano_var:'textura laplaciana'};
+  return `${prefix} · ${descriptions[base]||base.replaceAll('_',' ')}`;
+}
+function formatValue(value) {return Math.abs(value)>=100?value.toFixed(1):Math.abs(value)>=1?value.toFixed(3):value.toFixed(4)}
+function median(values) {const sorted=[...values].sort((a,b)=>a-b);return sorted.length?sorted[Math.floor((sorted.length-1)/2)]/2+sorted[Math.floor(sorted.length/2)]/2:null}
+function renderFeatures() {
+  if(!featureData)return;
+  const column=$('feature-select').value, index=featureData.columns.indexOf(column);
+  const split=$('feature-split').value, center=$('feature-center').value, selectedClass=$('feature-class').value;
+  const rows=featureData.rows.filter(r=>(split==='all'||r.split===split)&&(center==='all'||r.center===center)&&(selectedClass==='all'||r.label===selectedClass));
+  $('feature-description').textContent=column.startsWith('media_')?'Promedio de esta medida entre las regiones del paciente.':'Desviación de esta medida entre las regiones del paciente.';
+  if(!rows.length){$('feature-chart').textContent='No hay pacientes para esta combinación de filtros.';$('feature-summary').textContent='';return}
+  const values=rows.map(r=>r.values[index]), minimum=Math.min(...values), maximum=Math.max(...values);
+  const low=minimum===maximum?minimum-.5:minimum, high=minimum===maximum?maximum+.5:maximum, bins=16;
+  const groups={CE:[],LAA:[]};rows.forEach(r=>groups[r.label].push(r.values[index]));
+  const counts={CE:Array(bins).fill(0),LAA:Array(bins).fill(0)};
+  for(const label of ['CE','LAA'])for(const value of groups[label])counts[label][Math.min(bins-1,Math.floor((value-low)/(high-low)*bins))]++;
+  const fractions={CE:counts.CE.map(x=>groups.CE.length?x/groups.CE.length:0),LAA:counts.LAA.map(x=>groups.LAA.length?x/groups.LAA.length:0)};
+  const peak=Math.max(.01,...fractions.CE,...fractions.LAA), W=760,H=250,L=48,R=20,T=18,B=40,plotW=W-L-R,plotH=H-T-B,band=plotW/bins;
+  const grid=[0,.25,.5,.75,1].map(v=>`<line class="grid" x1="${L}" x2="${W-R}" y1="${T+plotH*(1-v)}" y2="${T+plotH*(1-v)}"/><text x="${L-8}" y="${T+plotH*(1-v)+4}" text-anchor="end">${Math.round(v*peak*100)}%</text>`).join('');
+  const bars=Array.from({length:bins},(_,i)=>['CE','LAA'].map((label,j)=>{const value=fractions[label][i],height=value/peak*plotH,x=L+i*band+j*band*.42+2,y=T+plotH-height;return `<rect x="${x}" y="${y}" width="${band*.39}" height="${height}" rx="2" fill="${label==='CE'?'#527d91':'#d98b4e'}"><title>${label}: ${counts[label][i]} pacientes (${Math.round(value*100)} % de la clase filtrada)</title></rect>`}).join('')).join('');
+  $('feature-chart').innerHTML=`<svg class="chart-svg feature-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribución de ${featureLabel(column)} por clase">${grid}${bars}<line class="axis" x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}"/><text x="${L}" y="${H-14}">${formatValue(low)}</text><text x="${W-R}" y="${H-14}" text-anchor="end">${formatValue(high)}</text></svg>`;
+  $('feature-summary').innerHTML=['CE','LAA'].map(label=>`<div><span class="swatch" style="background:${label==='CE'?'#527d91':'#d98b4e'}"></span><b>${label}</b> · ${groups[label].length} pacientes · mediana ${groups[label].length?formatValue(median(groups[label])):'—'}</div>`).join('');
+}
+['feature-select','feature-split','feature-center','feature-class'].forEach(id=>$(id).addEventListener('change',renderFeatures));
 
 function visibleModels() {return Object.keys(colors).filter(name=>document.querySelector(`input[data-model="${name}"]`)?.checked)}
 function metricLabel(key){return {roc_auc:'AUC ROC',balanced_accuracy:'Exactitud balanceada',average_precision:'Precisión promedio',recall_laa:'Sensibilidad LAA'}[key]}
@@ -48,6 +79,10 @@ function renderPerformance() {
   if(show) drawRoc(names);
   renderConfusion();
 }
+$('show-performance').addEventListener('change',event=>{
+  $('performance-content').hidden=!event.target.checked;
+  $('performance-hidden').hidden=event.target.checked;
+});
 function drawRoc(names) {
   const W=500,H=255,L=48,R=16,T=17,B=37,sx=x=>L+x*(W-L-R),sy=y=>H-B-y*(H-T-B);
   const grid=[0,.25,.5,.75,1].map(v=>`<line class="grid" x1="${sx(v)}" x2="${sx(v)}" y1="${sy(0)}" y2="${sy(1)}"/><line class="grid" x1="${sx(0)}" x2="${sx(1)}" y1="${sy(v)}" y2="${sy(v)}"/><text x="${sx(v)}" y="${H-17}" text-anchor="middle">${v}</text><text x="${L-9}" y="${sy(v)+4}" text-anchor="end">${v}</text>`).join('');
@@ -75,8 +110,12 @@ $('predict-form').addEventListener('submit',async event=>{
   }catch(error){$('prediction-result').innerHTML=`<div class="empty-result error-message">${escapeHtml(error.message)}</div>`}finally{button.disabled=false}
 });
 
-Promise.all([fetch('/api/overview').then(r=>r.json()),fetch('/api/performance').then(r=>r.json())]).then(([o,p])=>{
-  overviewData=o;performanceData=p;renderOverview();
+Promise.all([fetch('/api/overview').then(r=>r.json()),fetch('/api/performance').then(r=>r.json()),fetch('/api/features').then(r=>r.json())]).then(([o,p,f])=>{
+  overviewData=o;performanceData=p;featureData=f;renderOverview();
+  $('feature-select').innerHTML=f.columns.map(name=>`<option value="${name}">${featureLabel(name)}</option>`).join('');
+  $('feature-select').value='media_gris_entropia';
+  $('feature-center').innerHTML+=[...new Set(f.rows.map(r=>r.center))].sort((a,b)=>Number(a)-Number(b)).map(center=>`<option value="${center}">Centro ${center}</option>`).join('');
+  renderFeatures();
   $('model-toggles').innerHTML=Object.keys(colors).map(name=>`<label><input type="checkbox" data-model="${name}" checked><span class="swatch" style="background:${colors[name]}"></span>${shortNames[name]}</label>`).join('');
   $('model-toggles').addEventListener('change',renderPerformance);renderPerformance();
 }).catch(()=>{$('class-chart').textContent='No se pudieron cargar los resultados locales.'});
