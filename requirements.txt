@@ -10,3 +10,5 @@ tifffile>=2026.9
 zarr>=3.4,<4
 imagecodecs>=2026.8
 PyMuPDF>=1.28,<2
+scikit-learn>=1.6,<1.11
+joblib>=1.4,<2

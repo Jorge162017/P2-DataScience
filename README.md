@@ -24,6 +24,7 @@ correlaciones y revisión de valores atípicos. No se entrenó un clasificador.
 - [PDF del EDA visual](EDA_Visual_Proyecto2.pdf).
 - [Partición por paciente](PARTICION_DATOS.md): entrenamiento, validación y prueba sin mezclar pacientes.
 - [Selección de regiones](SELECCION_REGIONES.md): recortes con tejido y revisión de siete imágenes de baja cobertura.
+- [Resultados de modelos](RESULTADOS_MODELOS.md): ajuste y comparación por paciente, con prueba reservada.
 
 ## Datos y resultados
 
@@ -53,6 +54,7 @@ piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
 - `analizar_reducidas.py` y `validar_metodo_tejido.py`: EDA visual completo y auditoría de la máscara.
 - `particionar_pacientes.py` y `validar_particion.py`: división y control de fuga entre grupos.
 - `seleccionar_regiones.py` y `validar_regiones.py`: coordenadas de recortes y control de calidad.
+- `extraer_caracteristicas.py` y `entrenar_modelos.py`: extracción, ajuste y evaluación de tres clasificadores.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
 - `presentacion/`: diapositivas finales en PPTX y PDF.
@@ -87,6 +89,8 @@ python particionar_pacientes.py
 python validar_particion.py
 python seleccionar_regiones.py
 python validar_regiones.py
+python extraer_caracteristicas.py
+python entrenar_modelos.py
 ```
 
 En Windows, activar el entorno con `.venv\Scripts\activate`.

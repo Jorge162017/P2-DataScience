@@ -1,0 +1,17 @@
+{
+  "regiones": 5933,
+  "imagenes_con_regiones": 750,
+  "pacientes": 630,
+  "caracteristicas_regionales": 57,
+  "caracteristicas_por_paciente": 114,
+  "pacientes_por_particion": {
+    "entrenamiento": 438,
+    "validacion": 97,
+    "prueba": 95
+  },
+  "pacientes_entrenamiento_sin_regiones": [
+    "e72352",
+    "fd3079"
+  ],
+  "nota": "Características de color y textura descriptivas, agregadas por paciente; centro y etiqueta no son predictores."
+}

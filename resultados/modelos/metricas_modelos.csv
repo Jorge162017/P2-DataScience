@@ -1,0 +1,9 @@
+modelo,particion,accuracy,balanced_accuracy,roc_auc,average_precision,f1_laa,precision_laa,recall_laa,specificity_ce,tn,fp,fn,tp
+Regresión logística,validacion,0.57732,0.564959,0.60766,0.394507,0.422535,0.348837,0.535714,0.594203,41,28,13,15
+Bosque aleatorio,validacion,0.659794,0.559265,0.640787,0.47791,0.352941,0.391304,0.321429,0.797101,55,14,19,9
+SVM RBF,validacion,0.71134,0.5,0.575052,0.425692,0,0,0,1,69,0,28,0
+Regresión logística,prueba,0.536842,0.549331,0.528428,0.363773,0.405405,0.3125,0.576923,0.521739,36,33,11,15
+Bosque aleatorio,prueba,0.621053,0.487458,0.521739,0.337829,0.217391,0.25,0.192308,0.782609,54,15,21,5
+SVM RBF,prueba,0.726316,0.5,0.460981,0.286559,0,0,0,1,69,0,26,0
+Mayoría CE,validacion,0.71134,0.5,0.5,0.28866,0,0,0,1,69,0,28,0
+Mayoría CE,prueba,0.726316,0.5,0.5,0.273684,0,0,0,1,69,0,26,0
