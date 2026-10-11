@@ -6,10 +6,20 @@ reducidas para obtener una salida CE/LAA por modelo.
 
 ## Ejecución
 
-Desde la raíz del proyecto, con las dependencias de `requirements.txt` instaladas:
+Desde la raíz del proyecto, instala primero las dependencias en el mismo
+intérprete con el que abrirás la aplicación:
 
 ```bash
+python -m pip install -r requirements.txt
 python app.py
+```
+
+Si `python app.py` muestra `ModuleNotFoundError`, ese intérprete no tiene las
+dependencias. En esta computadora también se puede usar el Python que ya las
+tiene instaladas:
+
+```bash
+/usr/local/bin/python3 app.py
 ```
 
 Abrir `http://127.0.0.1:5000` en el navegador. La aplicación usa los artefactos
