@@ -1,0 +1,36 @@
+{
+  "imagenes": 754,
+  "pacientes": 632,
+  "regiones_seleccionadas": 5933,
+  "imagenes_con_regiones": 750,
+  "imagenes_sin_regiones": 4,
+  "imagenes_sin_regiones_ids": [
+    "280c26_0",
+    "e26a04_0",
+    "e72352_0",
+    "fd3079_0"
+  ],
+  "pacientes_con_regiones": 630,
+  "pacientes_sin_regiones_ids": [
+    "e72352",
+    "fd3079"
+  ],
+  "sin_regiones_por_particion": {
+    "entrenamiento": 3,
+    "prueba": 1
+  },
+  "regiones_por_particion": {
+    "entrenamiento": 4081,
+    "validacion": 958,
+    "prueba": 894
+  },
+  "parametros": {
+    "tile_px": 256,
+    "stride_px": 128,
+    "fraccion_minima": 0.08,
+    "max_regiones_por_imagen": 8,
+    "max_iou": 0.25,
+    "ancho_mascara_px": 280
+  },
+  "nota": "Las coordenadas están en el PNG reducido; no son recortes extraídos ni etiquetas histológicas."
+}
