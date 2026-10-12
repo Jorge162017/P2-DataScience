@@ -18,9 +18,9 @@ tres clasificadores y una aplicación interactiva.
 ## Entregables
 
 - [Notebook ejecutado](Tema22_Analisis_Exploratorio.ipynb): procedimientos, gráficos e interpretaciones.
-- [Informe final](<Proyecto 2 — Data Science.pdf>).
-- [Presentación PowerPoint](presentacion/Clasificacion_Coagulos_ACV.pptx).
-- [Presentación PDF](presentacion/Clasificacion_Coagulos_ACV.pdf).
+- [Informe de la primera fase](<Proyecto 2 — Data Science.pdf>).
+- [Presentación de la primera fase](presentacion/Clasificacion_Coagulos_ACV.pptx).
+- [Informe final de resultados](Informe_Final_Proyecto2_Jorge_Lopez.pdf) y [fuente editable](INFORME_FINAL_PROYECTO2.html).
 - [Avance de resultados de la segunda fase](AVANCE_RESULTADOS.md): cotejo con Kaggle y primeras láminas originales.
 - [EDA visual completo](EDA_VISUAL_REDUCIDAS.md): las 754 imágenes reducidas y validación del cribado de tejido.
 - [PDF del EDA visual](EDA_Visual_Proyecto2.pdf).
@@ -61,7 +61,7 @@ piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
 - `app.py`, `templates/` y `static/`: aplicación local con Flask para explorar y clasificar.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
-- `presentacion/`: diapositivas finales en PPTX y PDF.
+- `presentacion/`: diapositivas de la primera fase en PPTX y PDF; la presentación nueva de resultados se elaborará aparte.
 
 Los seis archivos visuales de la primera fase procedían de la copia local del
 proyecto **P2-DS, Grupo 7 (2025)**, de Davis Roldán, Andy Fuentes, Gabriel Paz y

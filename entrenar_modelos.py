@@ -6,6 +6,7 @@ La selección del modelo usa validación; la búsqueda de hiperparámetros usa
 
 import json
 import os
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -182,11 +183,14 @@ def main():
     for name, (pipeline, grid) in specifications.items():
         search = GridSearchCV(pipeline, grid, scoring="roc_auc", cv=cv,
                               n_jobs=1, refit=True)
+        started = time.perf_counter()
         search.fit(x_train, y_train)
+        elapsed = time.perf_counter() - started
         fitted[name] = search.best_estimator_
         tuning[name] = {"parametros": search.best_params_,
                         "auc_cv_media": float(search.best_score_),
-                        "auc_cv_desv": float(search.cv_results_["std_test_score"][search.best_index_])}
+                        "auc_cv_desv": float(search.cv_results_["std_test_score"][search.best_index_]),
+                        "tiempo_ajuste_s": round(elapsed, 3)}
         print(f"{name}: CV AUC={search.best_score_:.3f} {search.best_params_}", flush=True)
         x_val, y_val = arrays["validacion"]
         probabilities = search.best_estimator_.predict_proba(x_val)[:, 1]

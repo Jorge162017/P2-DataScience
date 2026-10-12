@@ -17,21 +17,24 @@
         "modelo__C": 0.01
       },
       "auc_cv_media": 0.5752779620933715,
-      "auc_cv_desv": 0.04666388829155377
+      "auc_cv_desv": 0.04666388829155377,
+      "tiempo_ajuste_s": 0.25
     },
     "Bosque aleatorio": {
       "parametros": {
         "modelo__min_samples_leaf": 10
       },
       "auc_cv_media": 0.5872682727643936,
-      "auc_cv_desv": 0.06338051499611166
+      "auc_cv_desv": 0.06338051499611166,
+      "tiempo_ajuste_s": 5.198
     },
     "SVM RBF": {
       "parametros": {
         "modelo__C": 1
       },
       "auc_cv_media": 0.5874363260514496,
-      "auc_cv_desv": 0.03881081885935518
+      "auc_cv_desv": 0.03881081885935518,
+      "tiempo_ajuste_s": 0.593
     }
   },
   "metricas": [
