@@ -21,6 +21,7 @@ tres clasificadores y una aplicación interactiva.
 - [Informe de la primera fase](<Proyecto 2 — Data Science.pdf>).
 - [Presentación de la primera fase](presentacion/Clasificacion_Coagulos_ACV.pptx).
 - [Informe final de resultados](Informe_Final_Proyecto2_Jorge_Lopez.pdf) y [fuente editable](INFORME_FINAL_PROYECTO2.html).
+- Presentación final de resultados: [PPTX editable](presentacion/Proyecto2_Resultados_Jorge_Lopez.pptx) y [PDF](presentacion/Proyecto2_Resultados_Jorge_Lopez.pdf). Explica el paso del piloto de seis imágenes al conjunto etiquetado completo de 754 PNG reducidos.
 - [Avance de resultados de la segunda fase](AVANCE_RESULTADOS.md): cotejo con Kaggle y primeras láminas originales.
 - [EDA visual completo](EDA_VISUAL_REDUCIDAS.md): las 754 imágenes reducidas y validación del cribado de tejido.
 - [PDF del EDA visual](EDA_Visual_Proyecto2.pdf).
@@ -61,7 +62,7 @@ piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
 - `app.py`, `templates/` y `static/`: aplicación local con Flask para explorar y clasificar.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
-- `presentacion/`: diapositivas de la primera fase en PPTX y PDF; la presentación nueva de resultados se elaborará aparte.
+- `presentacion/`: diapositivas de ambas fases en PPTX y PDF. `crear_presentacion_final.py` genera el PPTX nuevo y `exportar_presentacion_pdf.py` genera su copia en PDF.
 
 Los seis archivos visuales de la primera fase procedían de la copia local del
 proyecto **P2-DS, Grupo 7 (2025)**, de Davis Roldán, Andy Fuentes, Gabriel Paz y
