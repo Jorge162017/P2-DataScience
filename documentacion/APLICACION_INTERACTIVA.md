@@ -25,7 +25,7 @@ tiene instaladas:
 /usr/local/bin/python3 app.py
 ```
 
-Abrir `http://127.0.0.1:5000` en el navegador. La aplicación usa los artefactos
+Abrir `http://127.0.0.1:5050` en el navegador. La aplicación usa los artefactos
 `modelos/*.joblib` y los CSV de `datos/` y `resultados/` incluidos en el repositorio.
 Para clasificar, seleccionar de 1 a 10 PNG/JPG reducidos del mismo paciente.
 El límite de carga es 50 MB en total. La exploración y comparación de modelos

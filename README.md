@@ -101,6 +101,8 @@ python entrenar_modelos.py
 python app.py
 ```
 
+La aplicación se abre en `http://127.0.0.1:5050/`.
+
 En Windows, activar el entorno con `.venv\Scripts\activate`.
 No se necesita GPU. El script regenera `resultados/`; el notebook también puede
 ejecutarse completo. Sus interpretaciones son celdas Markdown y deben revisarse

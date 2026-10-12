@@ -1,7 +1,7 @@
 IMÁGENES PARA PROBAR LA APP · PROYECTO 2
 
 1. Desde la raíz del proyecto, inicia la app con: python app.py
-2. Abre http://127.0.0.1:5000 y entra a «Prueba una imagen».
+2. Abre http://127.0.0.1:5050 y entra a «Prueba una imagen».
 3. Carga UN archivo a la vez. Son pacientes distintos; no los selecciones juntos.
 
 Orden sugerido para la presentación:
