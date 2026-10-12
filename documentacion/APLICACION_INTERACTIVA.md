@@ -30,6 +30,8 @@ Abrir `http://127.0.0.1:5050` en el navegador. La aplicación usa los artefactos
 Para clasificar, seleccionar de 1 a 10 PNG/JPG reducidos del mismo paciente.
 El límite de carga es 50 MB en total. La exploración y comparación de modelos
 funcionan aunque los PNG de entrenamiento no estén en la máquina.
+La app muestra una vista previa de la primera imagen seleccionada y, para cada
+modelo, las salidas CE y LAA como porcentajes complementarios en una sola barra.
 
 ## Flujo de una imagen nueva
 

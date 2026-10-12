@@ -96,10 +96,24 @@ function renderConfusion() {
 }
 ['metric-select','split-select','show-curves','confusion-select'].forEach(id=>$(id).addEventListener('change',renderPerformance));
 
+let previewObjectUrl;
 $('image-input').addEventListener('change',event=>{
   const files=[...event.target.files];
-  $('file-list').textContent=files.length?files.map(f=>f.name).join(' · '):'Todavía no seleccionaste archivos.';
+  $('file-list').hidden=files.length<=1;
+  $('file-list').textContent=files.length>1?`Otras imágenes: ${files.slice(1).map(f=>f.name).join(' · ')}`:'';
+  if(previewObjectUrl)URL.revokeObjectURL(previewObjectUrl);
+  const first=files[0];
+  $('image-preview').hidden=!first;
+  if(first){
+    previewObjectUrl=URL.createObjectURL(first);
+    $('preview-image').src=previewObjectUrl;
+    $('preview-name').textContent=first.name;
+  }
 });
+function predictionCard(p){
+  const laa=p.probability_laa*100, ce=100-laa;
+  return `<div class="prediction-item"><div><strong>${escapeHtml(p.model)}</strong><span class="pill ${p.class==='LAA'?'laa':''}">${p.class}</span></div><p>Salidas del modelo para ambas clases</p><div class="dual-score-head"><span>CE <b>${ce.toFixed(1)} %</b></span><span>LAA <b>${laa.toFixed(1)} %</b></span></div><div class="dual-bar" role="img" aria-label="CE ${ce.toFixed(1)} por ciento; LAA ${laa.toFixed(1)} por ciento"><span class="ce-segment" style="width:${ce}%"></span><span class="laa-segment" style="width:${laa}%"></span></div></div>`;
+}
 async function requestPrediction(formData){
   for(let attempt=0;attempt<2;attempt++){
     let response;
@@ -126,7 +140,7 @@ $('predict-form').addEventListener('submit',async event=>{
   $('prediction-result').innerHTML='<div class="empty-result">Procesando imágenes y regiones…</div>';
   try{
     const data=await requestPrediction(new FormData(event.target));
-    $('prediction-result').innerHTML=`<div class="result-meta">${data.images_with_regions} de ${data.images_uploaded} imágenes con tejido · ${data.regions} regiones analizadas</div>`+data.predictions.map(p=>`<div class="prediction-item"><div><strong>${escapeHtml(p.model)}</strong><span class="pill ${p.class==='LAA'?'laa':''}">${p.class}</span></div><p>Salida LAA del modelo: ${(p.probability_laa*100).toFixed(1)} %</p><div class="bar-track"><div class="bar-fill" style="width:${p.probability_laa*100}%;background:${colors[p.model]}"></div></div></div>`).join('');
+    $('prediction-result').innerHTML=`<div class="result-meta">${data.images_with_regions} de ${data.images_uploaded} imágenes con tejido · ${data.regions} regiones analizadas</div>`+data.predictions.map(predictionCard).join('');
   }catch(error){$('prediction-result').innerHTML=`<div class="empty-result error-message">${escapeHtml(error.message)}</div>`}finally{button.disabled=false}
 });
 
