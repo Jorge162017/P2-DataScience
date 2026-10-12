@@ -17,18 +17,17 @@ tres clasificadores y una aplicación interactiva.
 
 ## Entregables
 
-- [Notebook ejecutado](Tema22_Analisis_Exploratorio.ipynb): procedimientos, gráficos e interpretaciones.
-- [Informe de la primera fase](<Proyecto 2 — Data Science.pdf>).
-- [Presentación de la primera fase](presentacion/Clasificacion_Coagulos_ACV.pptx).
-- [Informe final de resultados](Informe_Final_Proyecto2_Jorge_Lopez.pdf) y [fuente editable](INFORME_FINAL_PROYECTO2.html).
-- Presentación final de resultados: [PPTX editable](presentacion/Proyecto2_Resultados_Jorge_Lopez.pptx) y [PDF](presentacion/Proyecto2_Resultados_Jorge_Lopez.pdf). Explica el paso del piloto de seis imágenes al conjunto etiquetado completo de 754 PNG reducidos.
-- [Avance de resultados de la segunda fase](AVANCE_RESULTADOS.md): cotejo con Kaggle y primeras láminas originales.
-- [EDA visual completo](EDA_VISUAL_REDUCIDAS.md): las 754 imágenes reducidas y validación del cribado de tejido.
-- [PDF del EDA visual](EDA_Visual_Proyecto2.pdf).
-- [Partición por paciente](PARTICION_DATOS.md): entrenamiento, validación y prueba sin mezclar pacientes.
-- [Selección de regiones](SELECCION_REGIONES.md): recortes con tejido y revisión de siete imágenes de baja cobertura.
-- [Resultados de modelos](RESULTADOS_MODELOS.md): ajuste y comparación por paciente, con prueba reservada.
-- [Aplicación interactiva](APLICACION_INTERACTIVA.md): exploración, métricas y carga de nuevas imágenes reducidas.
+**Entrega final** (`entregables/final/`):
+
+- [Informe final en PDF](entregables/final/Informe_Final_Proyecto2_Jorge_Lopez.pdf) y [fuente HTML editable](entregables/final/INFORME_FINAL_PROYECTO2.html).
+- Presentación final: [PPTX editable](entregables/final/Proyecto2_Resultados_Jorge_Lopez.pptx) y [PDF](entregables/final/Proyecto2_Resultados_Jorge_Lopez.pdf). Explica el paso del piloto de seis imágenes al conjunto etiquetado completo de 754 PNG reducidos.
+
+**Entregas anteriores** (`entregables/anteriores/`):
+
+- [Notebook ejecutado de la primera fase](Tema22_Analisis_Exploratorio.ipynb), [informe](<entregables/anteriores/Proyecto 2 — Data Science.pdf>) y presentación ([PPTX](entregables/anteriores/Clasificacion_Coagulos_ACV.pptx), [PDF](entregables/anteriores/Clasificacion_Coagulos_ACV.pdf)).
+- [PDF del EDA visual intermedio](entregables/anteriores/EDA_Visual_Proyecto2.pdf).
+
+**Documentación técnica** (`documentacion/`): [procedencia y avance](documentacion/AVANCE_RESULTADOS.md), [EDA visual](documentacion/EDA_VISUAL_REDUCIDAS.md), [partición](documentacion/PARTICION_DATOS.md), [regiones](documentacion/SELECCION_REGIONES.md), [modelos](documentacion/RESULTADOS_MODELOS.md) y [app](documentacion/APLICACION_INTERACTIVA.md). Estos `.md` explican decisiones y controles; no son archivos que se deban entregar por separado.
 
 ## Datos y resultados
 
@@ -51,7 +50,7 @@ incluyen en Git por tamaño. Las imágenes reducidas provienen de una
 [copia derivada en Kaggle](https://www.kaggle.com/datasets/saurabhsawhney/mayo-resized-images),
 no de los TIFF originales del concurso. Ocho PNG tienen 1100 píxeles de ancho;
 los demás, 1120. Los 26 TIFF originales se conservan para cotejo y el análisis
-piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
+piloto se describe en [AVANCE_RESULTADOS.md](documentacion/AVANCE_RESULTADOS.md).
 
 - `datos/`: CSV, imágenes y registro de procedencia con SHA-256.
 - `validar_reducidas.py`: verifica los PNG y regenera el manifiesto.
@@ -62,7 +61,9 @@ piloto se describe en [AVANCE_RESULTADOS.md](AVANCE_RESULTADOS.md).
 - `app.py`, `templates/` y `static/`: aplicación local con Flask para explorar y clasificar.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
-- `presentacion/`: diapositivas de ambas fases en PPTX y PDF. `crear_presentacion_final.py` genera el PPTX nuevo y `exportar_presentacion_pdf.py` genera su copia en PDF.
+- `entregables/`: informes y presentaciones separados en `final/` y `anteriores/`. `crear_presentacion_final.py` y `exportar_presentacion_pdf.py` generan la presentación final.
+- `documentacion/`: notas técnicas para reproducir y auditar las decisiones del proyecto.
+- `referencias/`: enunciado del curso conservado localmente; no se publica en Git.
 
 Los seis archivos visuales de la primera fase procedían de la copia local del
 proyecto **P2-DS, Grupo 7 (2025)**, de Davis Roldán, Andy Fuentes, Gabriel Paz y

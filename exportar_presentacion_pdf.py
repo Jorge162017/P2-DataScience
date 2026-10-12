@@ -8,7 +8,7 @@ from pptx.enum.shapes import MSO_SHAPE_TYPE
 
 
 ROOT = Path(__file__).resolve().parent
-PPTX = ROOT / "presentacion/Proyecto2_Resultados_Jorge_Lopez.pptx"
+PPTX = ROOT / "entregables/final/Proyecto2_Resultados_Jorge_Lopez.pptx"
 PDF = PPTX.with_suffix(".pdf")
 FONTS = Path("/System/Library/Fonts/Supplemental")
 FONT_FILES = {

@@ -11,7 +11,7 @@ from pptx.util import Inches, Pt
 
 
 ROOT = Path(__file__).resolve().parent
-OUT = ROOT / "presentacion/Proyecto2_Resultados_Jorge_Lopez.pptx"
+OUT = ROOT / "entregables/final/Proyecto2_Resultados_Jorge_Lopez.pptx"
 BG = RGBColor(247, 248, 243)
 WHITE = RGBColor(255, 255, 255)
 INK = RGBColor(30, 52, 41)

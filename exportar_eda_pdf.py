@@ -8,7 +8,7 @@ import fitz
 
 ROOT = Path(__file__).resolve().parent
 FIG = ROOT / "resultados/figuras"
-OUT = ROOT / "EDA_Visual_Proyecto2.pdf"
+OUT = ROOT / "entregables/anteriores/EDA_Visual_Proyecto2.pdf"
 PAGE = fitz.paper_rect("a4")
 NAVY = (0.12, 0.21, 0.31)
 GRAY = (0.25, 0.29, 0.32)
