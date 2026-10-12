@@ -1,0 +1,27 @@
+IMÁGENES PARA PROBAR LA APP · PROYECTO 2
+
+1. Desde la raíz del proyecto, inicia la app con: python app.py
+2. Abre http://127.0.0.1:5000 y entra a «Prueba una imagen».
+3. Carga UN archivo a la vez. Son pacientes distintos; no los selecciones juntos.
+
+Orden sugerido para la presentación:
+
+01_CE_acierto_1764ff_0.png
+  Etiqueta conocida: CE. Paciente 1764ff, imagen 1764ff_0.
+  Bosque aleatorio: CE. Sirve para mostrar una clasificación acertada.
+
+02_LAA_acierto_c9ab6c_0.png
+  Etiqueta conocida: LAA. Paciente c9ab6c, imagen c9ab6c_0.
+  Bosque aleatorio: LAA. Sirve para mostrar la otra clase.
+
+03_LAA_error_aeb3bd_0.png
+  Etiqueta conocida: LAA. Paciente aeb3bd, imagen aeb3bd_0.
+  Bosque aleatorio: CE. Sirve para explicar un error real del modelo.
+
+Los tres casos pertenecen al grupo reservado de prueba y la app detectó ocho
+regiones de tejido en cada imagen. Son ejemplos elegidos para demostrar el flujo,
+no una muestra representativa del rendimiento. El bosque tuvo AUC ROC 0.522 en
+prueba y solo identificó 5 de 26 pacientes LAA; no tiene uso clínico.
+
+Los archivos son copias de PNG reducidos ya presentes en datos/reducidas/.
+Las imágenes originales del conjunto no se modificaron.
