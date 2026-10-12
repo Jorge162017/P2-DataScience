@@ -9,8 +9,6 @@ __pycache__/
 # Láminas originales del concurso: archivos grandes que se descargan localmente.
 /datos/originales/
 /datos/reducidas/
-# Copias locales para la demostración de la app.
-/pruebas/*.png
 # Vistas por lámina generadas por el piloto (regenerables; ~15 MB).
 /resultados/figuras/muestras_por_lamina/
 # Enunciado del curso conservado solo como referencia local.

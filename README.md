@@ -59,7 +59,7 @@ piloto se describe en [AVANCE_RESULTADOS.md](documentacion/AVANCE_RESULTADOS.md)
 - `seleccionar_regiones.py` y `validar_regiones.py`: coordenadas de recortes y control de calidad.
 - `extraer_caracteristicas.py` y `entrenar_modelos.py`: extracción, ajuste y evaluación de tres clasificadores.
 - `app.py`, `templates/` y `static/`: aplicación local con Flask para explorar y clasificar.
-- `pruebas/`: tres copias PNG locales listas para demostrar la app, con instrucciones en `LEEME.txt`. Las copias se excluyen de Git.
+- `pruebas/`: tres PNG listos para demostrar la app, con instrucciones en `LEEME.txt`.
 - `analisis.py`: carga, validación, procesamiento y exportación de resultados.
 - `resultados/`: tablas, figuras y validaciones de ambas fases.
 - `entregables/`: informes y presentaciones separados en `final/` y `anteriores/`. `crear_presentacion_final.py` y `exportar_presentacion_pdf.py` generan la presentación final.
