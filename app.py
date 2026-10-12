@@ -174,6 +174,14 @@ def api_predict():
                         "images_with_regions": image_count, "images_uploaded": len(files)})
     except ValueError as exc:
         return jsonify({"error": str(exc)}), 400
+    except Exception:
+        app.logger.exception("Falló la clasificación de una imagen")
+        return jsonify({"error": "No se pudo completar la clasificación. Revisa la terminal de la app y vuelve a intentarlo."}), 500
+
+
+@app.errorhandler(413)
+def image_too_large(_error):
+    return jsonify({"error": "Las imágenes superan el límite de 50 MB en total."}), 413
 
 
 if __name__ == "__main__":

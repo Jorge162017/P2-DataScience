@@ -100,12 +100,32 @@ $('image-input').addEventListener('change',event=>{
   const files=[...event.target.files];
   $('file-list').textContent=files.length?files.map(f=>f.name).join(' · '):'Todavía no seleccionaste archivos.';
 });
+async function requestPrediction(formData){
+  for(let attempt=0;attempt<2;attempt++){
+    let response;
+    try{
+      response=await fetch('/api/predict',{method:'POST',body:formData});
+    }catch{
+      throw new Error('No se pudo conectar con la app. Comprueba que python app.py siga abierto y vuelve a cargar la página.');
+    }
+    const raw=await response.text();
+    if(!raw.trim()){
+      if(attempt===0){await new Promise(resolve=>setTimeout(resolve,400));continue;}
+      throw new Error('La app no devolvió un resultado. Reinicia python app.py, recarga la página e inténtalo otra vez.');
+    }
+    let data;
+    try{data=JSON.parse(raw);}catch{
+      throw new Error('La app devolvió una respuesta inválida. Revisa la terminal donde ejecutaste python app.py.');
+    }
+    if(!response.ok)throw new Error(data.error||`No se pudo clasificar (error ${response.status}).`);
+    return data;
+  }
+}
 $('predict-form').addEventListener('submit',async event=>{
   event.preventDefault(); const button=event.target.querySelector('button');button.disabled=true;
   $('prediction-result').innerHTML='<div class="empty-result">Procesando imágenes y regiones…</div>';
   try{
-    const response=await fetch('/api/predict',{method:'POST',body:new FormData(event.target)});
-    const data=await response.json(); if(!response.ok)throw new Error(data.error||'No se pudo clasificar.');
+    const data=await requestPrediction(new FormData(event.target));
     $('prediction-result').innerHTML=`<div class="result-meta">${data.images_with_regions} de ${data.images_uploaded} imágenes con tejido · ${data.regions} regiones analizadas</div>`+data.predictions.map(p=>`<div class="prediction-item"><div><strong>${escapeHtml(p.model)}</strong><span class="pill ${p.class==='LAA'?'laa':''}">${p.class}</span></div><p>Salida LAA del modelo: ${(p.probability_laa*100).toFixed(1)} %</p><div class="bar-track"><div class="bar-fill" style="width:${p.probability_laa*100}%;background:${colors[p.model]}"></div></div></div>`).join('');
   }catch(error){$('prediction-result').innerHTML=`<div class="empty-result error-message">${escapeHtml(error.message)}</div>`}finally{button.disabled=false}
 });
